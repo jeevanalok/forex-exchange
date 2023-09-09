@@ -28,12 +28,13 @@ Follow these instructions to set up and run the Forex Exchange API on your local
 Before you begin, ensure you have met the following requirements:
 
 - **Node.js:** Install Node.js
-- **Mongo Db** Install MongoDB 
+- **Mongo Db** Install MongoDB
 - **APIKEY** api key from exchangeratesapi.io
 
 ### Installation
 
 1. Clone this repository to your local machine:
+   `https://github.com/jeevanalok/forex-exchange.git`
 
 2. Navigate to the project directory:
    `cd forex`
