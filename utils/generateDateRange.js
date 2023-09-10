@@ -1,3 +1,5 @@
+// generates an array of dates for a given date range
+
 const { formatDate } = require("./formatDate");
 
 exports.generateDateRange = (startDate, endDate) => {
@@ -13,7 +15,3 @@ exports.generateDateRange = (startDate, endDate) => {
   return dates;
 };
 
-// let startDate = new Date("2023-09-05");
-// let endDate = new Date("2023-09-09");
-
-// generateDateRange(startDate, endDate);

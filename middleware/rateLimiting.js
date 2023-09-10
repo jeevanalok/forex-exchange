@@ -1,3 +1,5 @@
+// Applies a ratelimit protocol
+
 const { rateLimit } = require("express-rate-limit");
 
 const apiLimiter = rateLimit({

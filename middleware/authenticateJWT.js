@@ -1,3 +1,5 @@
+// authenticate JWT tokens 
+
 const jwt = require("jsonwebtoken");
 
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;

@@ -1,3 +1,5 @@
+// handles the general routes
+
 const express = require("express");
 const router = express.Router();
 

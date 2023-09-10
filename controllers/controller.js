@@ -139,40 +139,41 @@ exports.fetchHistoryRates = async (req, res) => {
 exports.fetchHistoryRatesForARange = async (req, res) => {
   const { startDate, endDate } = req.query;
   async function connectToDB() {
-    if (new Date(startDate) > new Date(endDate)) {
-      res
-        .status(400)
-        .json({ message: "Start date should be smaller than end date." });
-    }
     try {
-      await client.connect();
-      const db = client.db(DB_NAME);
-      const collection = db.collection(COLLECTION_NAME);
+      if (new Date(startDate) > new Date(endDate)) {
+        res
+          .status(400)
+          .json({ message: "Start date should be smaller than end date." });
+      } else {
+        await client.connect();
+        const db = client.db(DB_NAME);
+        const collection = db.collection(COLLECTION_NAME);
 
-      try {
-        const startDateValidation = await collection.findOne({
-          date: startDate,
-        });
-        const endDateValidation = await collection.findOne({ date: endDate });
+        try {
+          const startDateValidation = await collection.findOne({
+            date: startDate,
+          });
+          const endDateValidation = await collection.findOne({ date: endDate });
 
-        if (startDateValidation === null || endDateValidation === null) {
-          res
-            .status(404)
-            .json({ message: "The given dates do not exist in the database." });
-        } else {
-          const result = await collection
-            .find({
-              date: { $gte: startDate, $lte: endDate },
-            })
-            .toArray();
+          if (startDateValidation === null || endDateValidation === null) {
+            res.status(404).json({
+              message: "The given dates do not exist in the database.",
+            });
+          } else {
+            const result = await collection
+              .find({
+                date: { $gte: startDate, $lte: endDate },
+              })
+              .toArray();
 
-          res
-            .status(200)
-            .json({ message: "Data Fetched Successfully", data: result });
+            res
+              .status(200)
+              .json({ message: "Data Fetched Successfully", data: result });
+          }
+        } catch (err) {
+          console.log(err);
+          res.status(404).json({ message: "Error in fetching data" });
         }
-      } catch (err) {
-        console.log(err);
-        res.status(404).json({ message: "Error in fetching data" });
       }
     } catch (err) {
       res.status(500).json({ message: "Server Error" });

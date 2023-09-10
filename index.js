@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const forexRoute = require("./routes/routes");
 const authRouter = require("./routes/auth");
-
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const { generateDateRange } = require("./utils/generateDateRange");
 const { apiLimiter } = require("./middleware/rateLimiting");
@@ -17,7 +16,6 @@ const {
   START_DATE,
 } = require("./config/config");
 const { authenticateJWT } = require("./middleware/authenticateJWT");
-const { formatDate } = require("./utils/formatDate");
 
 const app = express();
 
@@ -35,25 +33,17 @@ const client = new MongoClient(MONGO_URI, {
   },
 });
 
-
-
 async function connectToDB() {
   await client.connect();
   // Send a ping to confirm a successful connection
   await client.db(DB_NAME).command({ ping: 1 });
-
-  // const document = {
-  //   _id:objectID
-  //   date: String,
-  //   rates: Object
-  // };
 
   console.log("Pinged your deployment. Successfully connected to MongoDB!");
 
   const db = client.db(DB_NAME);
   const collection = db.collection(COLLECTION_NAME);
 
-  //db operations
+  //Initial DB operations while starting up
 
   const dateRange = generateDateRange(
     (startDate = START_DATE),
@@ -87,8 +77,6 @@ async function connectToDB() {
         }
       } catch (err) {
         console.log("Error: ", err);
-      } finally {
-        taskEndFlag = true;
       }
     })
   ).then(async () => {
