@@ -52,8 +52,11 @@ Before you begin, ensure you have met the following requirements:
 
 The Forex Exchange API provides the following endpoints:
 
-- **GET /convert-currency:** Convert currency from one type to another.
-- **GET /exchange-rates/live:** Retrieve live exchange rates for various currency pairs.
-- **GET /forex-history:** Query historical exchange rate data for the past 7 days.
+- **POST /auth/login:** Genrerate JWT token for auth
+- **POST /api/v1/convert-currency:** Convert currency from one type to another.
+- **GET api/v1/exchange-rates/live:** Retrieve live exchange rates for various currency pairs.
+- **GET api/v1/forex-history:** Query historical exchange rate data for the past 7 days.
+- **GET /api/v1/custom-forex-history?startDate=<yyyy-mm-dd>&endDate=<yyyy-mm-dd>** get forex history data for a specific date range
+- **GET api/v1/rate-lookup/date?date=<yyyy-mm-dd>** get forex history data for a specific date
 
 Go through the code to access more apis.
