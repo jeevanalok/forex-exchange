@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "backend for forex exchange application",
   "main": "index.js",
+  "repository":"https://github.com/jeevanalok/forex-exchange.git",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +18,8 @@
     "express-rate-limit": "^6.11.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.0.0"
+  },
+  "engines": {
+    "node": "18.17.1"
   }
 }
