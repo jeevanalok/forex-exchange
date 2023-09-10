@@ -1,6 +1,6 @@
 # Forex Exchange API
 
-Welcome to the Forex Exchange API project! This API is designed and implemented to provide the backend functionality for a Forex Exchange application. It enables users to perform currency conversion, access live exchange rates, and store/query historical exchange rate data for the past 7 days.
+Welcome to the Forex Exchange API project! This API is designed and implemented to provide the backend functionality for a Forex Exchange application. It enables users to perform currency conversion, access live exchange rates, and store/query historical exchange rate data for the past 7 days. [Live Preview](https://forex-exchange-68hj.onrender.com/)
 
 ## Table of Contents
 
