@@ -22,10 +22,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/api/v1", authenticateJWT, apiLimiter, forexRoute);
 app.use("/auth", authRouter);
-app.use("/", (req, res) => {
-  res.status(200).json({
+app.use("*", (req, res) => {
+  res.status(404).json({
     message:
-      "Welcome to forex exchange! Head over to github repo to know more ;)",
+      "Welcome to forex exchange! This endpoint doesn't exists.Head over to github repo to know more ;)",
     url: "https://github.com/jeevanalok/forex-exchange",
   });
 });
