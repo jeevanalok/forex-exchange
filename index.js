@@ -22,6 +22,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/api/v1", authenticateJWT, apiLimiter, forexRoute);
 app.use("/auth", authRouter);
+app.use("/", (req, res) => {
+  res.status(200).json({
+    message:
+      "Welcome to forex exchange! Head over to github repo to know more ;)",
+    url: "https://github.com/jeevanalok/forex-exchange",
+  });
+});
 
 const port = process.env.PORT || 3000;
 
